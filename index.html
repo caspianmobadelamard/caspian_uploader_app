@@ -10,10 +10,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="ارسال ایتا">
-
-<!-- ⬇️ لوگوی اختصاصی برنامه (Favicon & App Icon) به صورت Base64 ⬇️ -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmY2QzNGQiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkOTc3MDYiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iYyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzM4YmRmOCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAyODRjNyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxwYXRoIGQ9Ik01MCAxMCBMNTUgMTUgTDYyIDEzIEw2NSAyMCBMNzIgMjIgTDcyIDMwIEw3OCAzNSBMNzYgNDIgTDgyIDQ4IEw3OCA1NSBMODAgNjIgTDc0IDY4IEw3NCA3NiBMNjcgNzggTDYyIDg0IEw1NSA4MiBMNDggODYgTDQyIDgxIEwzNSA4MyBMMzAgNzcgTDIzIDc1IEwyMiA2NyBMMTYgNjIgTDE4IDU1IEwxMiA0OCBMMTcgNDIgTDE1IDM1IEwyMSAyOSBMMjIgMjEgTDI5IDE5IEwzNSAxMyBMNDIgMTUgWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2cpIiBzdHJva2Utd2lkdGg9IjMiLz48cGF0aCBkPSJNNTAgMjUgQzUwIDI1LCA2NSA0NSwgNjUgNTUgQzY1IDYzLCA1OCA3MCwgNTAgNzAgQzQyIDcwLCAzNSA2MywgMzUgNTUgQzM1IDQ1LCA1MCAyNSwgNTAgMjUgWiIgZmlsbD0idXJsKCNjKSIgb3BhY2l0eT0iMC44Ii8+PHBhdGggZD0iTTUwIDM1IEw2MCA0MCBMNjAgNTUgQzYwIDYyLCA1MCA2OCwgNTAgNjggQzUwIDY4LCA0MCA2MiwgNDAgNTUgTDQwIDQwIFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIwLjkiLz48cGF0aCBkPSJNNDUgNTIgTDQ4IDU2IEw1NSA0NiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9zdmc+">
-<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmY2QzNGQiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkOTc3MDYiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iYyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzM4YmRmOCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAyODRjNyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxwYXRoIGQ9Ik01MCAxMCBMNTUgMTUgTDYyIDEzIEw2NSAyMCBMNzIgMjIgTDcyIDMwIEw3OCAzNSBMNzYgNDIgTDgyIDQ4IEw3OCA1NSBMODAgNjIgTDc0IDY4IEw3NCA3NiBMNjcgNzggTDYyIDg0IEw1NSA4MiBMNDggODYgTDQyIDgxIEwzNSA4MyBMMzAgNzcgTDIzIDc1IEwyMiA2NyBMMTYgNjIgTDE4IDU1IEwxMiA0OCBMMTcgNDIgTDE1IDM1IEwyMSAyOSBMMjIgMjEgTDI5IDE5IEwzNSAxMyBMNDIgMTUgWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2cpIiBzdHJva2Utd2lkdGg9IjMiLz48cGF0aCBkPSJNNTAgMjUgQzUwIDI1LCA2NSA0NSwgNjUgNTUgQzY1IDYzLCA1OCA3MCwgNTAgNzAgQzQyIDcwLCAzNSA2MywgMzUgNTUgQzM1IDQ1LCA1MCAyNSwgNTAgMjUgWiIgZmlsbD0idXJsKCNjKSIgb3BhY2l0eT0iMC44Ii8+PHBhdGggZD0iTTUwIDM1IEw2MCA0MCBMNjAgNTUgQzYwIDYyLCA1MCA2OCwgNTAgNjggQzUwIDY4LCA0MCA2MiwgNDAgNTUgTDQwIDQwIFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIwLjkiLz48cGF0aCBkPSJNNDUgNTIgTDQ4IDU2IEw1NSA0NiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9zdmc+">
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -288,11 +285,12 @@ async function fetchDevice() {
   const serial = document.getElementById('serialInput').value.trim();
   if (!serial) return showToast("سریال را وارد کنید", "err");
   const url = localStorage.getItem(API_KEY);
+  const user = localStorage.getItem(USER_KEY);
   if (!url) return openSettings();
 
   try {
     showToast("در حال استعلام...", "info");
-    const res = await fetch(url + `?action=getDeviceDetails&category=${currentCat}&serial=${encodeURIComponent(serial)}`);
+    const res = await fetch(url + `?action=getDeviceDetails&category=${currentCat}&serial=${encodeURIComponent(serial)}&user=${encodeURIComponent(user)}`);
     const data = await res.json();
     
     if (data.ok) {
