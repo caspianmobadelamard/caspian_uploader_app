@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>ارسال تست به ایتا - کاسپین</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1e2a3a">
+<link rel="apple-touch-icon" href="icon-ios.png">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-base:#1e2a3a;--bg-surface:#27374a;--bg-elevated:#2f4257;--bg-input:#1a2332;--bg-hover:#324a63;
+  --border:#3a4d63;--border-strong:#4d6383;--border-dashed:#435a75;
+  --text:#e8eef5;--text-mid:#a5b5c5;--text-dim:#738599;
+  --gold:#fbbf24;--gold-dim:#d97706;--gold-glow:rgba(251,191,36,0.35);
+  --cyan:#38bdf8;--cyan-dim:#0284c7;--cyan-glow:rgba(56,189,248,0.35);
+  --purple:#a78bfa;--purple-dim:#7c3aed;--purple-glow:rgba(167,139,250,0.35);
+  --coral:#fb7185;--coral-dim:#e11d48;--coral-glow:rgba(251,113,133,0.35);
+  --mint:#4ade80;--mint-dim:#16a34a;--amber:#fcd34d;--danger:#f87171;
+  --radius:12px;--radius-sm:8px;
+  --shadow:0 4px 16px rgba(0,0,0,0.35);--shadow-hover:0 6px 24px rgba(0,0,0,0.5);
+  --base-font:15px;
+}
+body.light{
+  --bg-base:#f0f4f8;--bg-surface:#ffffff;--bg-elevated:#e8eef5;--bg-input:#ffffff;
+  --border:#d0d8e0;--border-strong:#a8b4c4;--border-dashed:#c0ccd8;
+  --text:#1a2332;--text-mid:#4a5568;--text-dim:#7a8699;
+  --shadow:0 2px 8px rgba(0,0,0,0.08);--shadow-hover:0 4px 16px rgba(0,0,0,0.12);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:var(--bg-base);color:var(--text);font-family:'Vazirmatn',sans-serif;font-size:var(--base-font);line-height:1.6;min-height:100vh;min-height:100dvh;transition:background 0.3s,color 0.3s;-webkit-tap-highlight-color:transparent;}
+body{background-image:linear-gradient(rgba(251,191,36,0.02) 1px, transparent 1px),linear-gradient(90deg, rgba(251,191,36,0.02) 1px, transparent 1px);background-size:28px 28px;padding-bottom:calc(30px + env(safe-area-inset-bottom));}
+.num,.mono,input[dir="ltr"]{font-family:'JetBrains Mono',monospace !important;direction:ltr;text-align:left;}
+input[type=text],input[type=password],textarea{width:100%;background:var(--bg-input);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;color:var(--text);font-size:1em;font-family:inherit;outline:none;transition:all 0.25s;}
+input:focus{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold),0 0 20px var(--gold-glow);}
+
+.topbar{position:sticky;top:0;z-index:50;background:var(--bg-surface);border-bottom:3px solid var(--border-strong);box-shadow:0 2px 0 var(--gold-glow),var(--shadow);padding-top:env(safe-area-inset-top);}
+.topbar::after{content:'';position:absolute;bottom:-3px;left:20px;right:20px;height:3px;background:linear-gradient(90deg, var(--gold), var(--cyan), var(--purple), var(--coral));border-radius:0 0 3px 3px;}
+.topbar-inner{max-width:800px;margin:0 auto;padding:14px 16px 0;}
+.topbar-row{display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid var(--border);gap:12px;}
+.brand{display:flex;align-items:center;gap:14px;flex:1;min-width:0;}
+.brand-mark{width:56px;height:56px;background:var(--bg-input);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0;overflow:hidden;border:2px solid var(--gold);animation:neonBorderColor 6s ease-in-out infinite;padding:6px;}
+@keyframes neonBorderColor{0%,100%{border-color:#fbbf24;box-shadow:0 0 12px var(--gold-glow);}33%{border-color:#38bdf8;box-shadow:0 0 12px var(--cyan-glow);}66%{border-color:#a78bfa;box-shadow:0 0 12px var(--purple-glow);}}
+.brand-text{flex:1;min-width:0;}
+.brand-text h1{font-size:1.05em;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.brand-text .sub{font-size:0.73em;color:var(--text-dim);margin-top:4px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-top:none;border-radius:0 0 var(--radius) var(--radius);overflow:hidden;margin-top:12px;}
+.tab{background:var(--bg-elevated);padding:12px 4px;cursor:pointer;transition:0.15s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font-size:0.83em;font-weight:700;color:var(--text-mid);}
+.tab.active{background:var(--bg-input);color:var(--gold);box-shadow:inset 0 -3px 0 var(--gold);}
+
+.container{max-width:800px;margin:0 auto;padding:16px 16px 0;}
+.card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:14px;box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.card::after{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg, var(--gold), var(--cyan), var(--purple), var(--coral));opacity:0.4;}
+label{display:block;font-size:0.87em;color:var(--text-mid);margin:14px 0 7px;font-weight:700;}
+.date-row{display:flex;gap:8px;align-items:stretch;}
+.date-row input{flex:1;min-width:0;}
+.btn{background:var(--bg-elevated);border:1.5px solid var(--gold-dim);color:var(--gold);border-radius:var(--radius-sm);padding:12px 14px;font-size:0.9em;cursor:pointer;font-weight:700;transition:0.2s;font-family:inherit;}
+.btn:hover{background:rgba(251,191,36,0.1);box-shadow:0 0 10px var(--gold-glow);}
+.btn:active{transform:scale(0.96);}
+.submit-btn{width:100%;margin-top:18px;padding:15px;border-radius:var(--radius);border:none;background:linear-gradient(135deg,var(--gold),var(--gold-dim));color:#1a1205;font-weight:800;font-size:1em;cursor:pointer;box-shadow:0 0 20px var(--gold-glow);font-family:inherit;}
+.submit-btn:disabled{opacity:.5;cursor:not-allowed;}
+
+.device-card{background:var(--bg-input);border:2px solid var(--cyan);border-radius:var(--radius);padding:16px;margin-top:16px;display:none;animation:slideDown 0.3s ease-out;}
+@keyframes slideDown{from{opacity:0;transform:translateY(-10px);}to{opacity:1;transform:translateY(0);}}
+.device-card .dc-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px dashed var(--border);padding-bottom:8px;margin-bottom:12px;flex-wrap:wrap;gap:8px;}
+.device-card .dc-serial{color:var(--gold);font-weight:800;font-family:'JetBrains Mono',monospace;font-size:1.3em;text-shadow:0 0 10px var(--gold-glow);}
+.device-card .dc-badge{background:rgba(56,189,248,0.2);color:var(--cyan);padding:4px 10px;border-radius:6px;font-size:0.85em;font-weight:700;border:1px solid rgba(56,189,248,0.4);}
+.device-card .dc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:0.9em;}
+.device-card .dc-item{display:flex;justify-content:space-between;padding:8px;background:var(--bg-surface);border-radius:6px;flex-wrap:wrap;}
+.device-card .dc-label{color:var(--text-dim);}
+.device-card .dc-val{color:var(--text);font-weight:700;}
+
+.image-preview{display:flex;gap:8px;overflow-x:auto;padding:10px 0;margin-top:10px;}
+.image-preview img{height:80px;width:80px;object-fit:cover;border-radius:var(--radius-sm);border:2px solid var(--border-strong);flex-shrink:0;}
+
+.reminder-item{display:flex;align-items:center;gap:12px;padding:12px;background:var(--bg-input);border-radius:var(--radius-sm);border:1px solid var(--border);margin-bottom:8px;}
+.reminder-item input[type="checkbox"]{width:22px;height:22px;accent-color:var(--gold);cursor:pointer;flex-shrink:0;}
+.reminder-item span{flex:1;font-size:0.95em;color:var(--text);transition:0.2s;word-break:break-word;}
+.reminder-item span.done{text-decoration:line-through;color:var(--text-dim);}
+.reminder-item button{background:none;border:none;color:var(--danger);cursor:pointer;font-size:1.2em;padding:4px;flex-shrink:0;}
+
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;align-items:center;justify-content:center;z-index:100;backdrop-filter:blur(4px);padding:20px;}
+.modal-backdrop.show{display:flex;}
+.modal{background:var(--bg-surface);border:1px solid var(--border-strong);border-radius:var(--radius);width:100%;max-width:400px;padding:20px;box-shadow:0 8px 40px rgba(0,0,0,0.5);}
+.modal h3{color:var(--gold);margin-bottom:16px;}
+.toast{position:fixed;top:calc(20px + env(safe-area-inset-top));left:50%;transform:translateX(-50%) translateY(-100px);background:var(--bg-elevated);color:var(--text);padding:12px 20px;border-radius:var(--radius);border:1px solid var(--border-strong);box-shadow:var(--shadow-hover);z-index:200;font-size:0.9em;font-weight:600;transition:transform 0.3s;max-width:90vw;text-align:center;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.toast.ok{border-color:var(--mint);color:var(--mint);}
+.toast.err{border-color:var(--danger);color:var(--danger);}
+.hidden{display:none !important;}
+
+@media (min-width: 900px) {
+  .container { max-width: 1000px; }
+  .topbar-inner { max-width: 1000px; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-row">
+      <div class="brand">
+        <div class="brand-mark">
+          <svg viewBox="0 0 100 100" width="100%" height="100%">
+            <defs>
+              <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#fcd34d"/><stop offset="100%" stop-color="#d97706"/></linearGradient>
+              <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#0284c7"/></linearGradient>
+            </defs>
+            <path d="M50 10 L55 15 L62 13 L65 20 L72 22 L72 30 L78 35 L76 42 L82 48 L78 55 L80 62 L74 68 L74 76 L67 78 L62 84 L55 82 L48 86 L42 81 L35 83 L30 77 L23 75 L22 67 L16 62 L18 55 L12 48 L17 42 L15 35 L21 29 L22 21 L29 19 L35 13 L42 15 Z" fill="none" stroke="url(#goldGrad)" stroke-width="3"/>
+            <path d="M50 25 C50 25, 65 45, 65 55 C65 63, 58 70, 50 70 C42 70, 35 63, 35 55 C35 45, 50 25, 50 25 Z" fill="url(#cyanGrad)" opacity="0.8"/>
+            <path d="M50 35 L60 40 L60 55 C60 62, 50 68, 50 68 C50 68, 40 62, 40 55 L40 40 Z" fill="none" stroke="#fff" stroke-width="2" opacity="0.9"/>
+            <path d="M45 52 L48 56 L55 46" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>ارسال تست به ایتا</h1>
+          <div class="sub" id="userStatus">وارد نشده</div>
+        </div>
+      </div>
+      <button class="btn" onclick="openSettings()" style="padding:8px 12px;">⚙️</button>
+    </div>
+    <div class="tabs">
+      <div class="tab active" data-tab="send" onclick="switchTab('send')">📤 ارسال عکس</div>
+      <div class="tab" data-tab="reminders" onclick="switchTab('reminders')">📝 یادداشت‌ها</div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div id="tab-send" class="tab-content">
+    <div class="card">
+      <label>دسته‌بندی دستگاه</label>
+      <div style="display:flex;gap:8px;">
+        <button class="btn cat-btn" style="flex:1;" onclick="setCategory('steam', this)">بخار</button>
+        <button class="btn cat-btn" style="flex:1;" onclick="setCategory('hotwater', this)">آبگرم</button>
+        <button class="btn cat-btn" style="flex:1;" onclick="setCategory('tanks', this)">مخازن</button>
+      </div>
+
+      <label>شماره سریال</label>
+      <div class="date-row">
+        <input type="text" id="serialInput" placeholder="سریال را وارد کنید..." dir="ltr">
+        <button class="btn" onclick="fetchDevice()" style="white-space:nowrap;">🔍 استعلام</button>
+      </div>
+      
+      <div class="device-card" id="deviceCard">
+        <div class="dc-head">
+          <span class="dc-serial" id="dcSerial">-</span>
+          <span class="dc-badge" id="dcProduct">-</span>
+        </div>
+        <div class="dc-grid">
+          <div class="dc-item"><span class="dc-label">ظرفیت:</span><span class="dc-val" id="dcCapacity">-</span></div>
+          <div class="dc-item"><span class="dc-label">فشار:</span><span class="dc-val" id="dcPressure">-</span></div>
+          <div class="dc-item" style="grid-column:1/-1;"><span class="dc-label">مشتری:</span><span class="dc-val" id="dcCustomer">-</span></div>
+        </div>
+      </div>
+
+      <label>نوع عکس (مشخص‌کننده کانال مقصد)</label>
+      <div style="display:flex;gap:8px;">
+        <button class="btn type-btn" style="flex:1;" onclick="setImageType('hydro', this)">💧 تست هیدرواستاتیک</button>
+        <button class="btn type-btn" style="flex:1;" onclick="setImageType('plate', this)">🪪 پلاک گواهی بازرسی</button>
+      </div>
+
+      <label>شرکت بازرسی (برای درج در کپشن)</label>
+      <div style="display:flex;gap:8px;">
+        <button class="btn insp-btn" style="flex:1;" onclick="setInspection('AJG', this)">آذران جوش (AJG)</button>
+        <button class="btn insp-btn" style="flex:1;" onclick="setInspection('ISQI', this)">بازرسی ISQI</button>
+      </div>
+
+      <label>انتخاب عکس‌ها</label>
+      <input type="file" id="imageInput" accept="image/*" multiple capture="environment" style="background:var(--bg-input);border:1px dashed var(--gold);padding:20px;text-align:center;cursor:pointer;width:100%;border-radius:var(--radius-sm);color:var(--text);font-family:inherit;">
+      <div class="image-preview" id="imagePreview"></div>
+
+      <label>توضیحات / کپشن (اختیاری)</label>
+      <input type="text" id="captionInput" placeholder="مثلاً: فشار تست ۲۰ بار...">
+
+      <button class="submit-btn" id="uploadBtn" onclick="uploadImages()">🚀 ارسال به کانال</button>
+    </div>
+  </div>
+
+  <div id="tab-reminders" class="tab-content hidden">
+    <div class="card">
+      <div style="font-size:1.1em;font-weight:800;color:var(--gold);margin-bottom:16px;border-bottom:1px dashed var(--border);padding-bottom:8px;">📝 یادداشت‌های من</div>
+      <div class="date-row" style="margin-bottom:16px;">
+        <input type="text" id="newReminderInput" placeholder="کار جدید..." onkeydown="if(event.key==='Enter') addReminder()">
+        <button class="btn" onclick="addReminder()">➕</button>
+      </div>
+      <div id="remindersList"></div>
+      <div style="display:flex;gap:8px;margin-top:16px;">
+        <button class="btn" style="flex:1;" onclick="requestNotification()">🔔 فعال‌سازی اعلان</button>
+        <button class="btn" style="flex:1;color:var(--danger);border-color:var(--danger);" onclick="clearDone()">🗑 پاکسازی</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="settingsModal">
+  <div class="modal">
+    <h3>⚙️ تنظیمات اتصال</h3>
+    <label>آدرس Web App (Apps Script)</label>
+    <input type="text" id="apiUrl" placeholder="https://script.google.com/..." dir="ltr">
+    <label>نام کاربری</label>
+    <input type="text" id="apiUser" dir="ltr">
+    <label>رمز عبور</label>
+    <input type="password" id="apiPass" dir="ltr">
+    <button class="submit-btn" onclick="saveSettings()">ذخیره و اتصال</button>
+    <button class="btn" style="width:100%;margin-top:8px;" onclick="document.getElementById('settingsModal').classList.remove('show')">بستن</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const API_KEY = "caspian_eitaa_api";
+const USER_KEY = "caspian_eitaa_user";
+const PASS_KEY = "caspian_eitaa_pass";
+const REM_KEY = "caspian_eitaa_reminders";
+
+let currentCat = "steam";
+let currentInsp = "";
+let currentImageType = "";
+let selectedFiles = [];
+let currentDevice = null;
+
+document.addEventListener("DOMContentLoaded", () => {
+  checkSettings();
+  loadReminders();
+  document.getElementById('imageInput').addEventListener('change', handleFileSelect);
+  document.querySelectorAll('.cat-btn')[0].style.borderColor = 'var(--gold)';
+  document.querySelectorAll('.cat-btn')[0].style.color = 'var(--gold)';
+});
+
+function switchTab(id) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === id));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+  document.getElementById('tab-' + id).classList.remove('hidden');
+}
+
+function showToast(msg, type='info') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + type;
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+function setCategory(cat, btn) {
+  currentCat = cat;
+  document.querySelectorAll('.cat-btn').forEach(b => { b.style.borderColor = 'var(--gold-dim)'; b.style.color = 'var(--gold)'; b.style.background = 'var(--bg-elevated)'; });
+  btn.style.borderColor = 'var(--gold)'; btn.style.color = '#1a1205'; btn.style.background = 'var(--gold)';
+}
+
+function setInspection(insp, btn) {
+  currentInsp = insp;
+  document.querySelectorAll('.insp-btn').forEach(b => { b.style.borderColor = 'var(--gold-dim)'; b.style.color = 'var(--gold)'; b.style.background = 'var(--bg-elevated)'; });
+  btn.style.borderColor = 'var(--gold)'; btn.style.color = '#1a1205'; btn.style.background = 'var(--gold)';
+}
+
+function setImageType(type, btn) {
+  currentImageType = type;
+  document.querySelectorAll('.type-btn').forEach(b => { b.style.borderColor = 'var(--gold-dim)'; b.style.color = 'var(--gold)'; b.style.background = 'var(--bg-elevated)'; });
+  btn.style.borderColor = 'var(--gold)'; btn.style.color = '#1a1205'; btn.style.background = 'var(--gold)';
+}
+
+function openSettings() {
+  document.getElementById('apiUrl').value = localStorage.getItem(API_KEY) || "";
+  document.getElementById('apiUser').value = localStorage.getItem(USER_KEY) || "";
+  document.getElementById('apiPass').value = localStorage.getItem(PASS_KEY) || "";
+  document.getElementById('settingsModal').classList.add('show');
+}
+
+function checkSettings() {
+  if (!localStorage.getItem(API_KEY) || !localStorage.getItem(USER_KEY)) {
+    document.getElementById('userStatus').textContent = "لطفاً تنظیمات را وارد کنید";
+    document.getElementById('userStatus').style.color = "var(--danger)";
+  } else {
+    document.getElementById('userStatus').textContent = "متصل: " + localStorage.getItem(USER_KEY);
+    document.getElementById('userStatus').style.color = "var(--mint)";
+  }
+}
+
+async function saveSettings() {
+  const url = document.getElementById('apiUrl').value.trim();
+  const user = document.getElementById('apiUser').value.trim();
+  const pass = document.getElementById('apiPass').value;
+  if(!url || !user) return showToast("اطلاعات را کامل کنید", "err");
+  
+  localStorage.setItem(API_KEY, url);
+  localStorage.setItem(USER_KEY, user);
+  localStorage.setItem(PASS_KEY, pass);
+  
+  showToast("در حال تست اتصال...", "info");
+  try {
+    const res = await fetch(url + `?action=whoami&user=${encodeURIComponent(user)}&password=${encodeURIComponent(pass)}`);
+    const data = await res.json();
+    if (data.ok) {
+      showToast("✅ اتصال برقرار شد. خوش آمدید " + (data.displayName || user), "ok");
+      document.getElementById('settingsModal').classList.remove('show');
+      checkSettings();
+    } else {
+      showToast("خطا: " + (data.error || "نام کاربری یا رمز اشتباه است"), "err");
+    }
+  } catch (e) {
+    showToast("خطای شبکه: " + e.message, "err");
+  }
+}
+
+async function fetchDevice() {
+  const serial = document.getElementById('serialInput').value.trim();
+  if (!serial) return showToast("سریال را وارد کنید", "err");
+  const url = localStorage.getItem(API_KEY);
+  const user = localStorage.getItem(USER_KEY);
+  const pass = localStorage.getItem(PASS_KEY);
+  if (!url) return openSettings();
+
+  try {
+    showToast("در حال استعلام...", "info");
+    const res = await fetch(url + `?action=getDeviceDetails&category=${currentCat}&serial=${encodeURIComponent(serial)}&user=${encodeURIComponent(user)}&password=${encodeURIComponent(pass)}`);
+    const data = await res.json();
+    
+    if (data.ok) {
+      currentDevice = data.device;
+      document.getElementById('deviceCard').style.display = 'block';
+      document.getElementById('dcSerial').textContent = currentDevice.serial;
+      document.getElementById('dcProduct').textContent = currentDevice.product;
+      document.getElementById('dcCapacity').textContent = currentDevice.capacity;
+      document.getElementById('dcPressure').textContent = currentDevice.pressure;
+      document.getElementById('dcCustomer').textContent = currentDevice.customer;
+      showToast("اطلاعات دستگاه دریافت شد", "ok");
+    } else {
+      showToast(data.error, "err");
+      document.getElementById('deviceCard').style.display = 'none';
+      currentDevice = null;
+    }
+  } catch (e) {
+    showToast("خطای شبکه: " + e.message, "err");
+  }
+}
+
+function handleFileSelect(e) {
+  const files = Array.from(e.target.files);
+  selectedFiles = files;
+  const preview = document.getElementById('imagePreview');
+  preview.innerHTML = '';
+  files.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      const img = document.createElement('img');
+      img.src = ev.target.result;
+      preview.appendChild(img);
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+async function uploadImages() {
+  if (!currentImageType) return showToast("نوع عکس (هیدرو یا پلاک) را انتخاب کنید", "err");
+  if (!currentInsp) return showToast("شرکت بازرسی را انتخاب کنید", "err");
+  if (selectedFiles.length === 0) return showToast("حداقل یک عکس انتخاب کنید", "err");
+  
+  const serial = document.getElementById('serialInput').value.trim();
+  const url = localStorage.getItem(API_KEY);
+  const user = localStorage.getItem(USER_KEY);
+  const pass = localStorage.getItem(PASS_KEY);
+  if (!url) return openSettings();
+
+  const btn = document.getElementById('uploadBtn');
+  btn.disabled = true;
+  btn.textContent = "⏳ در حال آپلود و ارسال...";
+
+  const base64Images = [];
+  for (const file of selectedFiles) {
+    const base64 = await fileToBase64(file);
+    base64Images.push(base64);
+  }
+
+  let customCaption = document.getElementById('captionInput').value.trim();
+  let finalCaption = "";
+  if (currentDevice) {
+    finalCaption = `سریال: ${currentDevice.serial}\nمدل: ${currentDevice.product}\nظرفیت: ${currentDevice.capacity}\nفشار: ${currentDevice.pressure}\nشرکت بازرسی: ${currentInsp}`;
+  } else {
+    finalCaption = `سریال: ${serial}\nشرکت بازرسی: ${currentInsp}`;
+  }
+  if (customCaption) finalCaption += `\nتوضیحات: ${customCaption}`;
+
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        action: 'sendEitaaImages',
+        category: currentCat,
+        serial: serial,
+        inspection: currentInsp,
+        imageType: currentImageType,
+        images: base64Images,
+        caption: finalCaption,
+        user: user,
+        password: pass
+      })
+    });
+    
+    const data = await res.json();
+    if (data.ok) {
+      showToast("✅ تصاویر با موفقیت به کانال ارسال شدند", "ok");
+      document.getElementById('imageInput').value = '';
+      document.getElementById('imagePreview').innerHTML = '';
+      document.getElementById('captionInput').value = '';
+      selectedFiles = [];
+    } else {
+      showToast("خطا در ارسال: " + data.error, "err");
+    }
+  } catch (e) {
+    showToast("خطای شبکه: " + e.message, "err");
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "🚀 ارسال به کانال";
+  }
+}
+
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  });
+}
+
+let reminders = [];
+
+function loadReminders() {
+  const stored = localStorage.getItem(REM_KEY);
+  if (stored) { try { reminders = JSON.parse(stored); } catch(e) {} }
+  renderReminders();
+}
+
+function saveReminders() {
+  localStorage.setItem(REM_KEY, JSON.stringify(reminders));
+  renderReminders();
+  scheduleNotifications();
+}
+
+function addReminder() {
+  const input = document.getElementById('newReminderInput');
+  const text = input.value.trim();
+  if (!text) return;
+  reminders.push({ id: Date.now(), text, done: false });
+  input.value = '';
+  saveReminders();
+  showToast("یادداشت اضافه شد", "ok");
+}
+
+function toggleReminder(id) {
+  const item = reminders.find(r => r.id === id);
+  if (item) { item.done = !item.done; saveReminders(); }
+}
+
+function deleteReminder(id) {
+  reminders = reminders.filter(r => r.id !== id);
+  saveReminders();
+}
+
+function clearDone() {
+  reminders = reminders.filter(r => !r.done);
+  saveReminders();
+  showToast("یادداشت‌های انجام‌شده پاک شدند", "ok");
+}
+
+function renderReminders() {
+  const list = document.getElementById('remindersList');
+  if (reminders.length === 0) {
+    list.innerHTML = '<div style="text-align:center;color:var(--text-dim);padding:20px;font-size:0.9em;">هیچ یادداشتی وجود ندارد.</div>';
+    return;
+  }
+  list.innerHTML = '';
+  reminders.forEach(r => {
+    const div = document.createElement('div');
+    div.className = 'reminder-item';
+    div.innerHTML = `
+      <input type="checkbox" ${r.done ? 'checked' : ''} onchange="toggleReminder(${r.id})">
+      <span class="${r.done ? 'done' : ''}">${escapeHtml(r.text)}</span>
+      <button onclick="deleteReminder(${r.id})">✕</button>
+    `;
+    list.appendChild(div);
+  });
+}
+
+function requestNotification() {
+  if (!("Notification" in window)) return showToast("مرورگر شما از اعلان پشتیبانی نمی‌کند", "err");
+  Notification.requestPermission().then(perm => {
+    if (perm === "granted") showToast("✅ اعلان‌ها فعال شدند", "ok");
+    else showToast("❌ اعلان‌ها رد شدند", "err");
+  });
+}
+
+function scheduleNotifications() {
+  if (!("Notification" in window) || Notification.permission !== "granted") return;
+  const pendingCount = reminders.filter(r => !r.done).length;
+  if (pendingCount > 0) {
+    const now = new Date();
+    const lastNotified = localStorage.getItem('lastRemNotif');
+    const today = now.toDateString();
+    if (lastNotified !== today && now.getHours() >= 8) {
+      new Notification("یادآوری کارها", {
+        body: `شما ${pendingCount} کار انجام نشده دارید.`,
+        icon: "icon-192.png"
+      });
+      localStorage.setItem('lastRemNotif', today);
+    }
+  }
+}
+
+function escapeHtml(text) {
+  return String(text).replace(/[&<>"']/g, function(m) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m];
+  });
+}
+</script>
+</body>
+</html>
