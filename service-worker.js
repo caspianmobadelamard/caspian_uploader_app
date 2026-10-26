@@ -1,12 +1,10 @@
-const CACHE_NAME = 'caspian-eitaa-v1';
+const CACHE_NAME = 'caspian-eitaa-v2';
 const ASSETS = [
   './',
   './index.html',
   './manifest.json',
   './icon-192.png',
-  './icon-512.png',
-  './icon-ios.png',
-  './icon-android.png'
+  './icon-512.png'
 ];
 
 self.addEventListener('install', event => {
@@ -33,6 +31,7 @@ self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
   const url = event.request.url;
 
+  // عدم کش کردن درخواست‌های Apps Script
   if (url.indexOf('script.google.com') !== -1) {
     event.respondWith(fetch(event.request));
     return;
