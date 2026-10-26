@@ -6,11 +6,14 @@
 <title>ارسال تست به ایتا - کاسپین</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#1e2a3a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ارسال ایتا">
 
 <!-- ⬇️ لوگوی اختصاصی برنامه (Favicon & App Icon) به صورت Base64 ⬇️ -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmY2QzNGQiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkOTc3MDYiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iYyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzM4YmRmOCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAyODRjNyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxwYXRoIGQ9Ik01MCAxMCBMNTUgMTUgTDYyIDEzIEw2NSAyMCBMNzIgMjIgTDcyIDMwIEw3OCAzNSBMNzYgNDIgTDgyIDQ4IEw3OCA1NSBMODAgNjIgTDc0IDY4IEw3NCA3NiBMNjcgNzggTDYyIDg0IEw1NSA4MiBMNDggODYgTDQyIDgxIEwzNSA4MyBMMzAgNzcgTDIzIDc1IEwyMiA2NyBMMTYgNjIgTDE4IDU1IEwxMiA0OCBMMTcgNDIgTDE1IDM1IEwyMSAyOSBMMjIgMjEgTDI5IDE5IEwzNSAxMyBMNDIgMTUgWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2cpIiBzdHJva2Utd2lkdGg9IjMiLz48cGF0aCBkPSJNNTAgMjUgQzUwIDI1LCA2NSA0NSwgNjUgNTUgQzY1IDYzLCA1OCA3MCwgNTAgNzAgQzQyIDcwLCAzNSA2MywgMzUgNTUgQzM1IDQ1LCA1MCAyNSwgNTAgMjUgWiIgZmlsbD0idXJsKCNjKSIgb3BhY2l0eT0iMC44Ii8+PHBhdGggZD0iTTUwIDM1IEw2MCA0MCBMNjAgNTUgQzYwIDYyLCA1MCA2OCwgNTAgNjggQzUwIDY4LCA0MCA2MiwgNDAgNTUgTDQwIDQwIFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIwLjkiLz48cGF0aCBkPSJNNDUgNTIgTDQ4IDU2IEw1NSA0NiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9zdmc+">
 <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmY2QzNGQiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkOTc3MDYiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iYyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzM4YmRmOCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAyODRjNyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxwYXRoIGQ9Ik01MCAxMCBMNTUgMTUgTDYyIDEzIEw2NSAyMCBMNzIgMjIgTDcyIDMwIEw3OCAzNSBMNzYgNDIgTDgyIDQ4IEw3OCA1NSBMODAgNjIgTDc0IDY4IEw3NCA3NiBMNjcgNzggTDYyIDg0IEw1NSA4MiBMNDggODYgTDQyIDgxIEwzNSA4MyBMMzAgNzcgTDIzIDc1IEwyMiA2NyBMMTYgNjIgTDE4IDU1IEwxMiA0OCBMMTcgNDIgTDE1IDM1IEwyMSAyOSBMMjIgMjEgTDI5IDE5IEwzNSAxMyBMNDIgMTUgWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2cpIiBzdHJva2Utd2lkdGg9IjMiLz48cGF0aCBkPSJNNTAgMjUgQzUwIDI1LCA2NSA0NSwgNjUgNTUgQzY1IDYzLCA1OCA3MCwgNTAgNzAgQzQyIDcwLCAzNSA2MywgMzUgNTUgQzM1IDQ1LCA1MCAyNSwgNTAgMjUgWiIgZmlsbD0idXJsKCNjKSIgb3BhY2l0eT0iMC44Ii8+PHBhdGggZD0iTTUwIDM1IEw2MCA0MCBMNjAgNTUgQzYwIDYyLCA1MCA2OCwgNTAgNjggQzUwIDY4LCA0MCA2MiwgNDAgNTUgTDQwIDQwIFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIwLjkiLz48cGF0aCBkPSJNNDUgNTIgTDQ4IDU2IEw1NSA0NiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9zdmc+">
-
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -107,7 +110,6 @@ label{display:block;font-size:0.87em;color:var(--text-mid);margin:14px 0 7px;fon
     <div class="topbar-row">
       <div class="brand">
         <div class="brand-mark">
-          <!-- لوگوی داخل هدر -->
           <svg viewBox="0 0 100 100" width="100%" height="100%">
             <defs>
               <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#fcd34d"/><stop offset="100%" stop-color="#d97706"/></linearGradient>
@@ -121,7 +123,7 @@ label{display:block;font-size:0.87em;color:var(--text-mid);margin:14px 0 7px;fon
         </div>
         <div class="brand-text">
           <h1>ارسال تست به ایتا</h1>
-          <div class="sub" id="userStatus">وارد نشده</div>
+          <div class="sub" id="userStatus">ثبت نشده</div>
         </div>
       </div>
       <button class="btn" onclick="openSettings()" style="padding:8px 12px;">⚙️</button>
@@ -143,9 +145,9 @@ label{display:block;font-size:0.87em;color:var(--text-mid);margin:14px 0 7px;fon
         <button class="btn cat-btn" style="flex:1;" onclick="setCategory('tanks', this)">مخازن</button>
       </div>
 
-      <label>شماره سریال</label>
+      <label>شماره سریال (کافیست بخشی از آن را وارد کنید)</label>
       <div class="date-row">
-        <input type="text" id="serialInput" placeholder="سریال را وارد کنید..." dir="ltr">
+        <input type="text" id="serialInput" placeholder="مثلاً 102..." dir="ltr">
         <button class="btn" onclick="fetchDevice()" style="white-space:nowrap;">🔍 استعلام</button>
       </div>
       
@@ -157,7 +159,8 @@ label{display:block;font-size:0.87em;color:var(--text-mid);margin:14px 0 7px;fon
         <div class="dc-grid">
           <div class="dc-item"><span class="dc-label">ظرفیت:</span><span class="dc-val" id="dcCapacity">-</span></div>
           <div class="dc-item"><span class="dc-label">فشار:</span><span class="dc-val" id="dcPressure">-</span></div>
-          <div class="dc-item" style="grid-column:1/-1;"><span class="dc-label">مشتری:</span><span class="dc-val" id="dcCustomer">-</span></div>
+          <div class="dc-item"><span class="dc-label">شرکت بازرسی:</span><span class="dc-val" id="dcInspection">-</span></div>
+          <div class="dc-item"><span class="dc-label">مشتری:</span><span class="dc-val" id="dcCustomer">-</span></div>
         </div>
       </div>
 
@@ -167,14 +170,8 @@ label{display:block;font-size:0.87em;color:var(--text-mid);margin:14px 0 7px;fon
         <button class="btn type-btn" style="flex:1;" onclick="setImageType('plate', this)">🪪 پلاک گواهی بازرسی</button>
       </div>
 
-      <label>شرکت بازرسی (برای درج در کپشن)</label>
-      <div style="display:flex;gap:8px;">
-        <button class="btn insp-btn" style="flex:1;" onclick="setInspection('AJG', this)">آذران جوش (AJG)</button>
-        <button class="btn insp-btn" style="flex:1;" onclick="setInspection('ISQI', this)">بازرسی ISQI</button>
-      </div>
-
-      <label>انتخاب عکس‌ها</label>
-      <input type="file" id="imageInput" accept="image/*" multiple capture="environment" style="background:var(--bg-input);border:1px dashed var(--gold);padding:20px;text-align:center;cursor:pointer;width:100%;border-radius:var(--radius-sm);color:var(--text);font-family:inherit;">
+      <label>انتخاب عکس‌ها (دوربین یا گالری)</label>
+      <input type="file" id="imageInput" accept="image/*" multiple style="background:var(--bg-input);border:1px dashed var(--gold);padding:20px;text-align:center;cursor:pointer;width:100%;border-radius:var(--radius-sm);color:var(--text);font-family:inherit;">
       <div class="image-preview" id="imagePreview"></div>
 
       <label>توضیحات / کپشن (اختیاری)</label>
@@ -205,10 +202,8 @@ label{display:block;font-size:0.87em;color:var(--text-mid);margin:14px 0 7px;fon
     <h3>⚙️ تنظیمات اتصال</h3>
     <label>آدرس Web App (Apps Script)</label>
     <input type="text" id="apiUrl" placeholder="https://script.google.com/..." dir="ltr">
-    <label>نام کاربری</label>
-    <input type="text" id="apiUser" dir="ltr">
-    <label>رمز عبور</label>
-    <input type="password" id="apiPass" dir="ltr">
+    <label>نام شما (برای ثبت در تاریخچه)</label>
+    <input type="text" id="apiUser" placeholder="مثلاً: علی" dir="rtl">
     <button class="submit-btn" onclick="saveSettings()">ذخیره و اتصال</button>
     <button class="btn" style="width:100%;margin-top:8px;" onclick="document.getElementById('settingsModal').classList.remove('show')">بستن</button>
   </div>
@@ -219,11 +214,9 @@ label{display:block;font-size:0.87em;color:var(--text-mid);margin:14px 0 7px;fon
 <script>
 const API_KEY = "caspian_eitaa_api";
 const USER_KEY = "caspian_eitaa_user";
-const PASS_KEY = "caspian_eitaa_pass";
 const REM_KEY = "caspian_eitaa_reminders";
 
 let currentCat = "steam";
-let currentInsp = "";
 let currentImageType = "";
 let selectedFiles = [];
 let currentDevice = null;
@@ -246,18 +239,12 @@ function showToast(msg, type='info') {
   const t = document.getElementById('toast');
   t.textContent = msg;
   t.className = 'toast show ' + type;
-  setTimeout(() => t.classList.remove('show'), 3500);
+  setTimeout(() => t.classList.remove('show'), type === 'err' ? 6000 : 3500);
 }
 
 function setCategory(cat, btn) {
   currentCat = cat;
   document.querySelectorAll('.cat-btn').forEach(b => { b.style.borderColor = 'var(--gold-dim)'; b.style.color = 'var(--gold)'; b.style.background = 'var(--bg-elevated)'; });
-  btn.style.borderColor = 'var(--gold)'; btn.style.color = '#1a1205'; btn.style.background = 'var(--gold)';
-}
-
-function setInspection(insp, btn) {
-  currentInsp = insp;
-  document.querySelectorAll('.insp-btn').forEach(b => { b.style.borderColor = 'var(--gold-dim)'; b.style.color = 'var(--gold)'; b.style.background = 'var(--bg-elevated)'; });
   btn.style.borderColor = 'var(--gold)'; btn.style.color = '#1a1205'; btn.style.background = 'var(--gold)';
 }
 
@@ -270,16 +257,16 @@ function setImageType(type, btn) {
 function openSettings() {
   document.getElementById('apiUrl').value = localStorage.getItem(API_KEY) || "";
   document.getElementById('apiUser').value = localStorage.getItem(USER_KEY) || "";
-  document.getElementById('apiPass').value = localStorage.getItem(PASS_KEY) || "";
   document.getElementById('settingsModal').classList.add('show');
 }
 
 function checkSettings() {
-  if (!localStorage.getItem(API_KEY) || !localStorage.getItem(USER_KEY)) {
+  const user = localStorage.getItem(USER_KEY);
+  if (!localStorage.getItem(API_KEY) || !user) {
     document.getElementById('userStatus').textContent = "لطفاً تنظیمات را وارد کنید";
     document.getElementById('userStatus').style.color = "var(--danger)";
   } else {
-    document.getElementById('userStatus').textContent = "متصل: " + localStorage.getItem(USER_KEY);
+    document.getElementById('userStatus').textContent = "کاربر: " + user;
     document.getElementById('userStatus').style.color = "var(--mint)";
   }
 }
@@ -287,40 +274,25 @@ function checkSettings() {
 async function saveSettings() {
   const url = document.getElementById('apiUrl').value.trim();
   const user = document.getElementById('apiUser').value.trim();
-  const pass = document.getElementById('apiPass').value;
-  if(!url || !user) return showToast("اطلاعات را کامل کنید", "err");
+  if(!url || !user) return showToast("آدرس و نام کاربری را کامل کنید", "err");
   
   localStorage.setItem(API_KEY, url);
   localStorage.setItem(USER_KEY, user);
-  localStorage.setItem(PASS_KEY, pass);
   
-  showToast("در حال تست اتصال...", "info");
-  try {
-    const res = await fetch(url + `?action=whoami&user=${encodeURIComponent(user)}&password=${encodeURIComponent(pass)}`);
-    const data = await res.json();
-    if (data.ok) {
-      showToast("✅ اتصال برقرار شد. خوش آمدید " + (data.displayName || user), "ok");
-      document.getElementById('settingsModal').classList.remove('show');
-      checkSettings();
-    } else {
-      showToast("خطا: " + (data.error || "نام کاربری یا رمز اشتباه است"), "err");
-    }
-  } catch (e) {
-    showToast("خطای شبکه: " + e.message, "err");
-  }
+  showToast("ذخیره شد", "ok");
+  document.getElementById('settingsModal').classList.remove('show');
+  checkSettings();
 }
 
 async function fetchDevice() {
   const serial = document.getElementById('serialInput').value.trim();
   if (!serial) return showToast("سریال را وارد کنید", "err");
   const url = localStorage.getItem(API_KEY);
-  const user = localStorage.getItem(USER_KEY);
-  const pass = localStorage.getItem(PASS_KEY);
   if (!url) return openSettings();
 
   try {
     showToast("در حال استعلام...", "info");
-    const res = await fetch(url + `?action=getDeviceDetails&category=${currentCat}&serial=${encodeURIComponent(serial)}&user=${encodeURIComponent(user)}&password=${encodeURIComponent(pass)}`);
+    const res = await fetch(url + `?action=getDeviceDetails&category=${currentCat}&serial=${encodeURIComponent(serial)}`);
     const data = await res.json();
     
     if (data.ok) {
@@ -330,7 +302,13 @@ async function fetchDevice() {
       document.getElementById('dcProduct').textContent = currentDevice.product;
       document.getElementById('dcCapacity').textContent = currentDevice.capacity;
       document.getElementById('dcPressure').textContent = currentDevice.pressure;
+      document.getElementById('dcInspection').textContent = currentDevice.inspectionCo;
       document.getElementById('dcCustomer').textContent = currentDevice.customer;
+      
+      const inspEl = document.getElementById('dcInspection');
+      if (currentDevice.inspectionCo === 'AJG') inspEl.style.color = 'var(--coral)';
+      else if (currentDevice.inspectionCo === 'ISQI') inspEl.style.color = 'var(--gold)';
+      
       showToast("اطلاعات دستگاه دریافت شد", "ok");
     } else {
       showToast(data.error, "err");
@@ -360,14 +338,12 @@ function handleFileSelect(e) {
 
 async function uploadImages() {
   if (!currentImageType) return showToast("نوع عکس (هیدرو یا پلاک) را انتخاب کنید", "err");
-  if (!currentInsp) return showToast("شرکت بازرسی را انتخاب کنید", "err");
   if (selectedFiles.length === 0) return showToast("حداقل یک عکس انتخاب کنید", "err");
   
   const serial = document.getElementById('serialInput').value.trim();
   const url = localStorage.getItem(API_KEY);
   const user = localStorage.getItem(USER_KEY);
-  const pass = localStorage.getItem(PASS_KEY);
-  if (!url) return openSettings();
+  if (!url || !user) return openSettings();
 
   const btn = document.getElementById('uploadBtn');
   btn.disabled = true;
@@ -382,9 +358,9 @@ async function uploadImages() {
   let customCaption = document.getElementById('captionInput').value.trim();
   let finalCaption = "";
   if (currentDevice) {
-    finalCaption = `سریال: ${currentDevice.serial}\nمدل: ${currentDevice.product}\nظرفیت: ${currentDevice.capacity}\nفشار: ${currentDevice.pressure}\nشرکت بازرسی: ${currentInsp}`;
+    finalCaption = `سریال: ${currentDevice.serial}\nمدل: ${currentDevice.product}\nظرفیت: ${currentDevice.capacity}\nفشار: ${currentDevice.pressure}\nشرکت بازرسی: ${currentDevice.inspectionCo}`;
   } else {
-    finalCaption = `سریال: ${serial}\nشرکت بازرسی: ${currentInsp}`;
+    finalCaption = `سریال: ${serial}`;
   }
   if (customCaption) finalCaption += `\nتوضیحات: ${customCaption}`;
 
@@ -395,12 +371,11 @@ async function uploadImages() {
         action: 'sendEitaaImages',
         category: currentCat,
         serial: serial,
-        inspection: currentInsp,
+        inspection: currentDevice ? currentDevice.inspectionCo : "UNKNOWN",
         imageType: currentImageType,
         images: base64Images,
         caption: finalCaption,
-        user: user,
-        password: pass
+        user: user
       })
     });
     
@@ -412,7 +387,7 @@ async function uploadImages() {
       document.getElementById('captionInput').value = '';
       selectedFiles = [];
     } else {
-      showToast("خطا در ارسال: " + data.error, "err");
+      showToast("خطا: " + data.error, "err");
     }
   } catch (e) {
     showToast("خطای شبکه: " + e.message, "err");
@@ -432,64 +407,32 @@ function fileToBase64(file) {
 }
 
 let reminders = [];
-
 function loadReminders() {
   const stored = localStorage.getItem(REM_KEY);
   if (stored) { try { reminders = JSON.parse(stored); } catch(e) {} }
   renderReminders();
 }
-
-function saveReminders() {
-  localStorage.setItem(REM_KEY, JSON.stringify(reminders));
-  renderReminders();
-  scheduleNotifications();
-}
-
+function saveReminders() { localStorage.setItem(REM_KEY, JSON.stringify(reminders)); renderReminders(); scheduleNotifications(); }
 function addReminder() {
   const input = document.getElementById('newReminderInput');
-  const text = input.value.trim();
-  if (!text) return;
+  const text = input.value.trim(); if (!text) return;
   reminders.push({ id: Date.now(), text, done: false });
-  input.value = '';
-  saveReminders();
-  showToast("یادداشت اضافه شد", "ok");
+  input.value = ''; saveReminders(); showToast("یادداشت اضافه شد", "ok");
 }
-
-function toggleReminder(id) {
-  const item = reminders.find(r => r.id === id);
-  if (item) { item.done = !item.done; saveReminders(); }
-}
-
-function deleteReminder(id) {
-  reminders = reminders.filter(r => r.id !== id);
-  saveReminders();
-}
-
-function clearDone() {
-  reminders = reminders.filter(r => !r.done);
-  saveReminders();
-  showToast("یادداشت‌های انجام‌شده پاک شدند", "ok");
-}
-
+function toggleReminder(id) { const item = reminders.find(r => r.id === id); if (item) { item.done = !item.done; saveReminders(); } }
+function deleteReminder(id) { reminders = reminders.filter(r => r.id !== id); saveReminders(); }
+function clearDone() { reminders = reminders.filter(r => !r.done); saveReminders(); showToast("یادداشت‌های انجام‌شده پاک شدند", "ok"); }
 function renderReminders() {
   const list = document.getElementById('remindersList');
-  if (reminders.length === 0) {
-    list.innerHTML = '<div style="text-align:center;color:var(--text-dim);padding:20px;font-size:0.9em;">هیچ یادداشتی وجود ندارد.</div>';
-    return;
-  }
+  if (reminders.length === 0) { list.innerHTML = '<div style="text-align:center;color:var(--text-dim);padding:20px;font-size:0.9em;">هیچ یادداشتی وجود ندارد.</div>'; return; }
   list.innerHTML = '';
   reminders.forEach(r => {
     const div = document.createElement('div');
     div.className = 'reminder-item';
-    div.innerHTML = `
-      <input type="checkbox" ${r.done ? 'checked' : ''} onchange="toggleReminder(${r.id})">
-      <span class="${r.done ? 'done' : ''}">${escapeHtml(r.text)}</span>
-      <button onclick="deleteReminder(${r.id})">✕</button>
-    `;
+    div.innerHTML = `<input type="checkbox" ${r.done ? 'checked' : ''} onchange="toggleReminder(${r.id})"><span class="${r.done ? 'done' : ''}">${escapeHtml(r.text)}</span><button onclick="deleteReminder(${r.id})">✕</button>`;
     list.appendChild(div);
   });
 }
-
 function requestNotification() {
   if (!("Notification" in window)) return showToast("مرورگر شما از اعلان پشتیبانی نمی‌کند", "err");
   Notification.requestPermission().then(perm => {
@@ -497,29 +440,18 @@ function requestNotification() {
     else showToast("❌ اعلان‌ها رد شدند", "err");
   });
 }
-
 function scheduleNotifications() {
   if (!("Notification" in window) || Notification.permission !== "granted") return;
   const pendingCount = reminders.filter(r => !r.done).length;
   if (pendingCount > 0) {
-    const now = new Date();
-    const lastNotified = localStorage.getItem('lastRemNotif');
-    const today = now.toDateString();
+    const now = new Date(); const lastNotified = localStorage.getItem('lastRemNotif'); const today = now.toDateString();
     if (lastNotified !== today && now.getHours() >= 8) {
-      new Notification("یادآوری کارها", {
-        body: `شما ${pendingCount} کار انجام نشده دارید.`,
-        icon: "icon-192.png"
-      });
+      new Notification("یادآوری کارها", { body: `شما ${pendingCount} کار انجام نشده دارید.`, icon: "icon-192.png" });
       localStorage.setItem('lastRemNotif', today);
     }
   }
 }
-
-function escapeHtml(text) {
-  return String(text).replace(/[&<>"']/g, function(m) {
-    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m];
-  });
-}
+function escapeHtml(text) { return String(text).replace(/[&<>"']/g, function(m) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]; }); }
 </script>
 </body>
 </html>
